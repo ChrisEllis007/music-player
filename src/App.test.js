@@ -7,3 +7,14 @@ it('renders without crashing', () => {
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
+it('returns an array of songs when a search query is passed in', () =>{
+    // expect.assertions(1);
+    // return fetchData().then(data => {
+    //     expect(data).toBe('peanut butter');
+    // });
+});
+
+it('does not search for songs if the search query is empty', () => {
+
+});

@@ -1,21 +1,40 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {getSongs} from "./api/itunes.service";
+import SongList from "./components/songList/song-list";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+
+    constructor(){
+        super();
+
+        this.state = {
+            songList: []
+        }
+    }
+
+    componentWillMount(){
+        this.getSongList('tina+arena').then(songList => this.setState({songList: songList}));
+    }
+
+    getSongList(searchQuery){
+       return new Promise((resolve,reject) => {
+           getSongs(searchQuery)
+           .then((body) => {
+               resolve(body.results);
+           })
+           .catch(err => reject(err));
+       })
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <SongList songs={this.state.songList}/>
+            </div>
+        );
+    }
 }
 
 export default App;
