@@ -1,0 +1,24 @@
+.song{
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  padding: 1rem;
+
+  .song-title,
+  .song-artist,
+  .song-album{
+    margin: 0.2rem 0;
+  }
+
+  .song-album{
+    font-weight: normal;
+  }
+
+  .song-body{
+    padding: 0 1rem;
+  }
+
+  .song-box-art{
+    align-self: center;
+  }
+}
