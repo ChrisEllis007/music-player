@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './song.css';
-
+import songPlayingIcon from '../../common/images/speaker.png';
 
 class Song extends React.Component{
 
@@ -20,6 +20,7 @@ class Song extends React.Component{
                     <h6 className="song-artist">{this.props.artist}</h6>
                     <h6 className="song-album">{this.props.album }</h6>
                 </div>
+                <img className='song-playing-icon' alt='song playing indicator' src={songPlayingIcon}/>
             </div>)
     }
 }

@@ -3,6 +3,7 @@
   flex-direction: row;
   text-align: left;
   padding: 1rem;
+  align-items: center;
 
   .song-title,
   .song-artist,
@@ -16,9 +17,17 @@
 
   .song-body{
     padding: 0 1rem;
+    //this pushes the icon to the far right
+    margin-right: auto;
   }
 
   .song-box-art{
     align-self: center;
+  }
+
+  .song-playing-icon{
+    width: 2.5rem;
+    height: 2.5rem;
+    opacity: 0;
   }
 }

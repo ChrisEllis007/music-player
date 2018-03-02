@@ -11,10 +11,10 @@ class SongList extends React.Component{
 
     render() {
         return(
-        <ul className='songlist'>
+        <ul className='song-list'>
             {this.props.songs.map((song, index) => {
                return(
-                <li key={"song"+index} >
+                <li className="song-list-item" key={"song"+index} >
                     <Song
                         boxArt={song.artworkUrl60}
                         songName={song.trackName} artist={song.artistName} album={song.collectionName}></Song>
