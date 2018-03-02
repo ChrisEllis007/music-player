@@ -5,6 +5,11 @@
   padding: 1rem;
   align-items: center;
 
+  &:hover{
+    cursor: pointer;
+    opacity: .7;
+  }
+
   .song-title,
   .song-artist,
   .song-album{

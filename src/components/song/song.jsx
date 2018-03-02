@@ -12,14 +12,16 @@ class Song extends React.Component{
         super();
     }
 
+    playSong(event){
+        this.props.onSelected(this.props.songUrl);
+    }
+
     render() {
         return(
-            <div className='song'>
-                {this.props.boxArt &&
+            <div className='song' onClick={this.playSong.bind(this)}>
                 <img className='song-box-art' alt='box art' src={this.props.boxArt}/>
-                }
                 <div className="song-body">
-                    <h5 className="song-title">{this.props.songName}</h5>
+                    <h5 className="song-title">{this.props.name}</h5>
                     <h6 className="song-artist">{this.props.artist}</h6>
                     <h6 className="song-album">{this.props.album }</h6>
                 </div>
@@ -30,9 +32,11 @@ class Song extends React.Component{
 
 
 Song.propTypes = {
-    songName: PropTypes.string,
+    name: PropTypes.string,
     artist: PropTypes.string,
-    album: PropTypes.string
+    album: PropTypes.string,
+    songUrl: PropTypes.string,
+    onSelected: PropTypes.func
 }
 
 export default Song;

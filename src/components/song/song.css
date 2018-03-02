@@ -4,6 +4,9 @@
   text-align: left;
   padding: 1rem;
   align-items: center; }
+  .song:hover {
+    cursor: pointer;
+    opacity: .7; }
   .song .song-title,
   .song .song-artist,
   .song .song-album {
