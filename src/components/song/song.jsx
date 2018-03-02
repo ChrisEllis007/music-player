@@ -12,13 +12,17 @@ class Song extends React.Component{
         super();
     }
 
+    /**
+     * Click event handler
+     * @param event
+     */
     playSong(event){
-        this.props.onSelected(this.props.songUrl);
+        this.props.onSelected(this.props.songUrl, this.props.index);
     }
 
     render() {
         return(
-            <div className='song' onClick={this.playSong.bind(this)}>
+            <div className={'song' + (this.props.isPlaying ? ' is-playing' : '')} onClick={this.playSong.bind(this)}>
                 <img className='song-box-art' alt='box art' src={this.props.boxArt}/>
                 <div className="song-body">
                     <h5 className="song-title">{this.props.name}</h5>
@@ -36,8 +40,10 @@ Song.propTypes = {
     artist: PropTypes.string,
     album: PropTypes.string,
     songUrl: PropTypes.string,
-    onSelected: PropTypes.func
-}
+    onSelected: PropTypes.func,
+    isPlaying: PropTypes.bool,
+    index: PropTypes.number
+};
 
 export default Song;
 

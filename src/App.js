@@ -4,6 +4,8 @@ import './App.css';
 import {getSongs} from "./api/itunes.service";
 import SongList from "./components/songList/song-list";
 import SearchBox from "./components/search-box/search-box";
+import MediaPlayer from './components/media-player/media-player'
+import testSong from './assets/test.mp3'
 
 class App extends Component {
 
@@ -12,12 +14,18 @@ class App extends Component {
 
         this.state = {
             songList: [],
-            searchQuery: ''
+            searchQuery: '',
+            currentSong: '',
+            currentSongIndex: -1
         }
     }
 
     componentWillMount(){
-        // this.getSongList('tina+arena').then(songList => this.setState({songList: songList}));
+        // const mp =  new MediaPlayer();
+        // mp.playSong(testSong).then(_ => {console.log('working fein');
+        //     console.log('mp.audio.currentTime = ', mp.audio.currentTime);
+        //     console.log('!mp.audio.paused = ', !mp.audio.paused)
+        // }).catch(err => console.log('err', err));
     }
 
     /**
@@ -55,12 +63,17 @@ class App extends Component {
         });
     }
 
+    onSongSelected(songURL, index){
+        this.setState({currentSong: songURL,currentSongIndex: index});
+    }
+
     render() {
         return (
             <div className="App">
                <SearchBox value={this.state.searchQuery}
                           onChange={this.onUpdatedSearchQuery.bind(this)}/>
-                <SongList songs={this.state.songList}/>
+                <SongList selectedIndex={this.state.currentSongIndex} songs={this.state.songList} onSelection={this.onSongSelected.bind(this)}/>
+                <MediaPlayer song={this.state.currentSong}/>
             </div>
         );
     }

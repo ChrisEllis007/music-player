@@ -12,8 +12,13 @@ class SongList extends React.Component{
         super();
     }
 
-    onSongSelected(url){
-        this.props.onSelection(url)
+    /**
+     * Delegated event from a Song component, called when it's been clicked on
+     * @param url
+     * @param index
+     */
+    onSongSelected(url, index){
+        this.props.onSelection(url, index)
     }
 
     render() {
@@ -25,11 +30,13 @@ class SongList extends React.Component{
                         return (
                             <li className="song-list-item" key={"song" + index}>
                                 <Song
+                                    index={index}
                                     boxArt={song.artworkUrl60}
                                     name={song.trackName}
                                     artist={song.artistName}
                                     album={song.collectionName}
                                     songUrl={song.previewUrl}
+                                    isPlaying={this.props.selectedIndex === index}
                                     onSelected={this.onSongSelected.bind(this)}
                                 ></Song>
                             </li>)
@@ -45,7 +52,8 @@ class SongList extends React.Component{
 
 SongList.propTypes = {
     songs: PropTypes.array,
-    onSelection: PropTypes.func
+    onSelection: PropTypes.func,
+    selectedIndex: PropTypes.number
 }
 
 export default SongList;
