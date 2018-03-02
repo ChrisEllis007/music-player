@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import './song.css';
 import songPlayingIcon from '../../common/images/speaker.png';
 
+/**
+ * This class deals with a single song
+ */
 class Song extends React.Component{
 
     constructor() {

@@ -18,3 +18,5 @@ it('returns an array of songs when a search query is passed in', () =>{
 it('does not search for songs if the search query is empty', () => {
 
 });
+it('when a search query of 3 or more characters has been entered it calls the search query service', () => {
+});
