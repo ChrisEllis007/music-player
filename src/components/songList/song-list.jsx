@@ -12,6 +12,10 @@ class SongList extends React.Component{
         super();
     }
 
+    onSongSelected(url){
+        this.props.onSelection(url)
+    }
+
     render() {
         const hasTracks = this.props.songs.length > 0;
             if(hasTracks) {
@@ -22,8 +26,12 @@ class SongList extends React.Component{
                             <li className="song-list-item" key={"song" + index}>
                                 <Song
                                     boxArt={song.artworkUrl60}
-                                    songName={song.trackName} artist={song.artistName}
-                                    album={song.collectionName}></Song>
+                                    name={song.trackName}
+                                    artist={song.artistName}
+                                    album={song.collectionName}
+                                    songUrl={song.previewUrl}
+                                    onSelected={this.onSongSelected.bind(this)}
+                                ></Song>
                             </li>)
                     })}
                 </ul>)
@@ -36,7 +44,8 @@ class SongList extends React.Component{
 
 
 SongList.propTypes = {
-    songs: PropTypes.array
+    songs: PropTypes.array,
+    onSelection: PropTypes.func
 }
 
 export default SongList;

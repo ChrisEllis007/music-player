@@ -21,7 +21,9 @@ describe('getSongs()', () => {
     it('should specify the number of songs in the collection', () => {
         return getSongs('tina+arena')
             .then(data => {
-                expect(data.resultsCount).toBe(data.results.length)
+                const count = data.resultCount;
+                const results = data.results.length;
+                expect(count).toBe(results)
             })
     });
     it('songs should all contain an artist name', () => {
@@ -44,7 +46,7 @@ describe('getSongs()', () => {
         return getSongs('tina+arena')
             .then(data => {
                 for(let i = 0; i < data.results; i++){
-                    expect(data.results[i].trackViewUrl).toBeDefined();
+                    expect(data.results[i].previewUrl).toBeDefined();
                 }
             })
     })
