@@ -17,8 +17,8 @@ class SongList extends React.Component{
      * @param url
      * @param index
      */
-    onSongSelected(url, index){
-        this.props.onSelection(url, index)
+    onSongSelected(index){
+        this.props.onSelection(index)
     }
 
     render() {
@@ -28,16 +28,15 @@ class SongList extends React.Component{
                 <ul className='song-list'>
                     {this.props.songs.map((song, index) => {
                         return (
-                            <li className="song-list-item" key={"song" + index}>
+                            <li className="song-list-item" key={"song" + index}
+                                onClick={_ => this.onSongSelected(index)}>
                                 <Song
                                     index={index}
                                     boxArt={song.artworkUrl60}
                                     name={song.trackName}
                                     artist={song.artistName}
                                     album={song.collectionName}
-                                    songUrl={song.previewUrl}
                                     isPlaying={this.props.selectedIndex === index}
-                                    onSelected={this.onSongSelected.bind(this)}
                                 ></Song>
                             </li>)
                     })}
