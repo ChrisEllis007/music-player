@@ -1,6 +1,9 @@
+@import "common/sass/variables";
+
 *{
   box-sizing: border-box;
 }
 .App{
   padding: 2rem;
+  background: $brown;
 }

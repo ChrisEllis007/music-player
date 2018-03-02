@@ -4,12 +4,15 @@
   text-align: left;
   padding: 1rem;
   align-items: center; }
+  .song.is-playing .song-playing-icon {
+    opacity: 1; }
   .song:hover {
     cursor: pointer;
     opacity: .7; }
   .song .song-title,
   .song .song-artist,
   .song .song-album {
+    color: white;
     margin: 0.2rem 0; }
   .song .song-album {
     font-weight: normal; }
