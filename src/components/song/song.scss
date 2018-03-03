@@ -6,11 +6,17 @@
   text-align: left;
   padding: 1rem;
   align-items: center;
+  position: relative;
 
   &.is-playing{
     .song-playing-icon{
       opacity: 1;
     }
+  }
+
+  &.is-selected {
+    background: $darkBlue;
+
   }
 
   &:hover{

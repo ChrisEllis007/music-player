@@ -11,11 +11,6 @@ class MediaPlayer extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            playing: undefined,
-            paused: false
-        }
     }
 
 
@@ -25,8 +20,19 @@ class MediaPlayer extends React.Component {
      */
     playSong(audioUrl) {
         this.audio.src = audioUrl;
+        if (this.props.autoPlay !== false) {
+            this.startSong();
+        }
+    }
+
+    /**
+     * starts a song playing
+     */
+    startSong(){
+        // call the onplay handler
         this.audio.play().catch(err => console.log('error playing audio ',err));
-        this.setState({playing: true, paused: false});
+        this.props.onPlay(true);
+        // this.setState({playing: true, paused: false});
     }
 
     /**
@@ -36,7 +42,8 @@ class MediaPlayer extends React.Component {
         //pause song
         event.stopPropagation();
         event.preventDefault();
-        this.setState({paused: true});
+        this.props.onPause(true);
+        // this.setState({paused: true});
         this.audio.pause();
     }
 
@@ -46,8 +53,8 @@ class MediaPlayer extends React.Component {
     resume(event){
         event.stopPropagation();
         event.preventDefault();
-        this.setState({paused: false});
-        this.audio.play();
+        this.props.onPause(false);
+        this.startSong();
     }
 
     // lifecycle event
@@ -65,8 +72,8 @@ class MediaPlayer extends React.Component {
     render(){
         return(
             <div className={'media-player '
-            + (!this.state.paused ? ' is-paused':'')
-            + (this.state.playing ? ' is-playing':'') }>
+            + (!this.props.isPaused ? ' is-paused':'')
+            + (this.props.isPlaying ? ' is-playing':'') }>
                 <img className='media-player-btn media-player-btn-play'
                      onClick={this.resume.bind(this)}
                      src={playBtn} alt='play button' />
@@ -81,7 +88,13 @@ class MediaPlayer extends React.Component {
 }
 
 MediaPlayer.propTypes = {
-    song: PropTypes.string
+    song: PropTypes.string,
+    autoPlay: PropTypes.bool,
+    onPause: PropTypes.func,
+    onPlay: PropTypes.func,
+    isPaused:PropTypes.bool,
+    isPlaying:PropTypes.bool
+
 };
 
 export default MediaPlayer;

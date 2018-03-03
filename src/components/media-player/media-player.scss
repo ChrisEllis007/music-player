@@ -42,4 +42,10 @@
   .media-player-btn-pause{
     display: none;
   }
+
+  @media only screen and (min-width: $largeBreakpoint) {
+    position: relative;
+    width: 100%;
+    transform: translateY(0);
+  }
 }

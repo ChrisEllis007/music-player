@@ -3,9 +3,12 @@
   flex-direction: row;
   text-align: left;
   padding: 1rem;
-  align-items: center; }
+  align-items: center;
+  position: relative; }
   .song.is-playing .song-playing-icon {
     opacity: 1; }
+  .song.is-selected {
+    background: #4458B2; }
   .song:hover {
     cursor: pointer;
     opacity: .7; }

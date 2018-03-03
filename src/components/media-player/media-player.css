@@ -25,3 +25,8 @@
       opacity: .8; }
   .media-player .media-player-btn-pause {
     display: none; }
+  @media only screen and (min-width: 800px) {
+    .media-player {
+      position: relative;
+      width: 100%;
+      transform: translateY(0); } }
