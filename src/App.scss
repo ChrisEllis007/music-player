@@ -7,6 +7,7 @@
   padding: 2rem;
   background: $brown;
   display: grid;
+  min-height: 100vh;
 }
 
 @media only screen and (min-width: $largeBreakpoint) {

@@ -8,19 +8,10 @@ import PropTypes from 'prop-types';
  */
 class Loader extends React.Component {
 
-    constructor() {
-        super();
-    }
-
-    show() {
-    }
-
-    hide() {
-    }
-
     render() {
         return (
-            <div className={"loader " + (this.props.isLoading ? 'show' : '')}>
+            <div className={"loader " + (this.props.showLoader ? 'show' : '')}>
+                <h1>{this.props.isLoading}</h1>
                 <img className='loader-icon' src={loaderIcon} alt="loading icon" />
             </div>
         )
@@ -28,7 +19,7 @@ class Loader extends React.Component {
 }
 
 Loader.propTypes = {
-    isLoading: PropTypes.bool
+    showLoader: PropTypes.bool
 };
 
 export default Loader;

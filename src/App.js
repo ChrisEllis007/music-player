@@ -29,7 +29,7 @@ class App extends Component {
             isPlaying: false,
             isPaused: false,
             forceStart: false,
-            isLoading: true
+            isLoading: false
         }
     }
 
@@ -63,11 +63,13 @@ class App extends Component {
         this.setState({searchQuery: value}, () => {
             // only perform a search if more than 2 characters have been typed
             // TODO check integrity of data
-            if (this.state.searchQuery.length > 2) {
+            if (this.state.searchQuery.length > 3 && !this.state.isLoading) {
+                //show loading screen
+                this.setState({isLoading: true});
                 //change the spaces for +'s for the service
                 const searchQuery = this.state.searchQuery.split(' ').join('+');
                 this.getSongList(searchQuery).then(songList => {
-                    this.setState({songList: songList})
+                    this.setState({songList: songList, isLoading: false})
                 });
             }
         });
@@ -227,7 +229,7 @@ class App extends Component {
                 />
                 }
 
-                <Loader show={this.state.isLoading}/>
+                <Loader showLoader={this.state.isLoading} />
             </div>
         );
     }

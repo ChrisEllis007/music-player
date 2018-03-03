@@ -4,7 +4,8 @@
 .App {
   padding: 2rem;
   background: #B29232;
-  display: grid; }
+  display: grid;
+  min-height: 100vh; }
 
 @media only screen and (min-width: 800px) {
   .App {
