@@ -5,6 +5,7 @@ import SongList from "./components/songList/song-list";
 import SearchBox from "./components/search-box/search-box";
 import MediaPlayer from './components/media-player/media-player'
 import Album from "./components/album/album";
+import Loader from "./components/loader/loader";
 
 /**
  * Main component for iTunes app
@@ -27,7 +28,8 @@ class App extends Component {
             albumSongIndex: -1,
             isPlaying: false,
             isPaused: false,
-            forceStart: false
+            forceStart: false,
+            isLoading: true
         }
     }
 
@@ -224,6 +226,8 @@ class App extends Component {
                     autoPlay={this.state.forceStart}
                 />
                 }
+
+                <Loader show={this.state.isLoading}/>
             </div>
         );
     }
