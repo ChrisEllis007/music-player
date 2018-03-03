@@ -11,6 +11,9 @@ class App extends Component {
     constructor(){
         super();
 
+        this.mql = window.matchMedia('(min-width: 800px)');
+        this.mql.addListener(this.onMediaQueryChanged.bind(this));
+
         this.state = {
             songList: [],
             searchQuery: '',
@@ -22,13 +25,9 @@ class App extends Component {
         }
     }
 
-    componentWillMount(){
-
-        // const mp =  new MediaPlayer();
-        // mp.playSong(testSong).then(_ => {console.log('working fein');
-        //     console.log('mp.audio.currentTime = ', mp.audio.currentTime);
-        //     console.log('!mp.audio.paused = ', !mp.audio.paused)
-        // }).catch(err => console.log('err', err));
+    componentDidMount(){
+        // check current width of screen to determine which mode to run in
+        this.setState({ wideMode: this.mql.matches});
     }
 
     /**
@@ -74,7 +73,7 @@ class App extends Component {
         const selectedSong = this.state.songList[index];
         const songURL  = selectedSong.previewUrl;
         const albumId  = selectedSong.collectionId;
-        // TODO only get album songs when in wide view
+
         this.setState(
             {
                 currentSong: songURL,
@@ -85,6 +84,7 @@ class App extends Component {
 
     /**
      * Gets the list of songs of a given album
+     * TODO  no need to do this in narrow mode
      */
     getAlbumSongs(){
         getSongsOfCollection(this.state.currentAlbumId).then(songList => {
@@ -113,6 +113,17 @@ class App extends Component {
             });
     }
 
+    /**
+     * Event called when a media query is triggered
+     * This is used to switch from narrow to wide modes, which have different
+     * users interaction models
+     * @param event
+     */
+    onMediaQueryChanged(event) {
+        this.setState({ wideMode: event.matches});
+    }
+
+
     render() {
         return (
             <div className="App">
@@ -124,10 +135,14 @@ class App extends Component {
                         onSelection={this.onSongSelected.bind(this)}/>
                     <MediaPlayer song={this.state.currentSong}/>
                 </div>
-                <Album
+
+                {/* only render album in wide mode */}
+                {this.state.wideMode &&
+                    <Album
                     boxArt={this.state.albumBoxArt}
                     selectedIndex={this.state.albumSongIndex}
                     onSelection={this.onAlbumSongSelected.bind(this)} songs={this.state.albumSongs}/>
+                }
             </div>
         );
     }
