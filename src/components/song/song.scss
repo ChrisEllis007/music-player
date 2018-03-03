@@ -1,3 +1,5 @@
+@import "../../common/sass/variables";
+
 .song{
   display: flex;
   flex-direction: row;
@@ -14,6 +16,17 @@
   &:hover{
     cursor: pointer;
     opacity: .7;
+  }
+
+  &.song-album{
+    .song-box-art,
+    .song-album,
+    .song-artist{
+      display:none;
+    }
+    .song-title{
+      font-size: $mediumTitleText;
+    }
   }
 
   .song-title,

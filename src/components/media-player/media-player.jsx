@@ -32,8 +32,10 @@ class MediaPlayer extends React.Component {
     /**
      * Pauses the current song
      */
-    pause() {
+    pause(event) {
         //pause song
+        event.stopPropagation();
+        event.preventDefault();
         this.setState({paused: true});
         this.audio.pause();
     }
@@ -41,7 +43,9 @@ class MediaPlayer extends React.Component {
     /**
      * resumes a paused song
      */
-    resume(){
+    resume(event){
+        event.stopPropagation();
+        event.preventDefault();
         this.setState({paused: false});
         this.audio.play();
     }

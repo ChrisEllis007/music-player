@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {getSongs} from "./api/itunes.service";
+import {getSongs, getSongsOfCollection} from "./api/itunes.service";
 import SongList from "./components/songList/song-list";
 import SearchBox from "./components/search-box/search-box";
 import MediaPlayer from './components/media-player/media-player'
-import testSong from './assets/test.mp3'
+import Album from "./components/album/album";
 
 class App extends Component {
 
@@ -16,11 +15,15 @@ class App extends Component {
             songList: [],
             searchQuery: '',
             currentSong: '',
-            currentSongIndex: -1
+            currentSongIndex: -1,
+            albumSongs:[],
+            currentAlbumId: -1,
+            albumSongIndex: -1
         }
     }
 
     componentWillMount(){
+
         // const mp =  new MediaPlayer();
         // mp.playSong(testSong).then(_ => {console.log('working fein');
         //     console.log('mp.audio.currentTime = ', mp.audio.currentTime);
@@ -63,17 +66,68 @@ class App extends Component {
         });
     }
 
-    onSongSelected(songURL, index){
-        this.setState({currentSong: songURL,currentSongIndex: index});
+    /**
+     * Called when a song is clicked on
+     * @param index
+     */
+    onSongSelected(index){
+        const selectedSong = this.state.songList[index];
+        const songURL  = selectedSong.previewUrl;
+        const albumId  = selectedSong.collectionId;
+        // TODO only get album songs when in wide view
+        this.setState(
+            {
+                currentSong: songURL,
+                searchResultsSongIndex: index,
+                albumSongIndex: -1,
+                currentAlbumId: albumId},_ => this.getAlbumSongs());
+    }
+
+    /**
+     * Gets the list of songs of a given album
+     */
+    getAlbumSongs(){
+        getSongsOfCollection(this.state.currentAlbumId).then(songList => {
+            this.setState(
+                {
+                    albumSongs: songList.results.filter(item => item.wrapperType === 'track'),
+                    albumBoxArt: songList.results[0].artworkUrl100
+                })
+        });
+    }
+
+    /**
+     * Called when an album song is clicked on
+     * @param index
+     */
+    onAlbumSongSelected(index){
+        const selectedSong = this.state.albumSongs[index];
+        const songURL  = selectedSong.previewUrl;
+        const albumId  = selectedSong.collectionId;
+        this.setState(
+            {
+                currentSong: songURL,
+                searchResultsSongIndex: -1,
+                albumSongIndex: index,
+                currentAlbumId: albumId
+            });
     }
 
     render() {
         return (
             <div className="App">
-               <SearchBox value={this.state.searchQuery}
-                          onChange={this.onUpdatedSearchQuery.bind(this)}/>
-                <SongList selectedIndex={this.state.currentSongIndex} songs={this.state.songList} onSelection={this.onSongSelected.bind(this)}/>
-                <MediaPlayer song={this.state.currentSong}/>
+                <div className="track-search">
+                   <SearchBox value={this.state.searchQuery}
+                              onChange={this.onUpdatedSearchQuery.bind(this)}/>
+                    <SongList
+                        selectedIndex={this.state.searchResultsSongIndex} songs={this.state.songList}
+                        onSelection={this.onSongSelected.bind(this)}/>
+                    <MediaPlayer song={this.state.currentSong}/>
+                </div>
+                <Album
+                    boxArt={this.state.albumBoxArt}
+                    selectedIndex={this.state.albumSongIndex}
+                    onSelection={this.onAlbumSongSelected.bind(this)} songs={this.state.albumSongs}/>
             </div>
         );
     }

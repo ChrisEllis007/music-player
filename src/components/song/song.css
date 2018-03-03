@@ -9,6 +9,12 @@
   .song:hover {
     cursor: pointer;
     opacity: .7; }
+  .song.song-album .song-box-art,
+  .song.song-album .song-album,
+  .song.song-album .song-artist {
+    display: none; }
+  .song.song-album .song-title {
+    font-size: 1.3rem; }
   .song .song-title,
   .song .song-artist,
   .song .song-album {

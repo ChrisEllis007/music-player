@@ -15,7 +15,7 @@ class Song extends React.Component{
 
     render() {
         return(
-            <div className={'song' + (this.props.isPlaying ? ' is-playing' : '')} >
+            <div className={'song' + (this.props.isPlaying ? ' is-playing ' : ' ') + (this.props.class || '')} >
                 <img className='song-box-art' alt='box art' src={this.props.boxArt}/>
                 <div className="song-body">
                     <h5 className="song-title">{this.props.name}</h5>
@@ -32,7 +32,8 @@ Song.propTypes = {
     name: PropTypes.string,
     artist: PropTypes.string,
     album: PropTypes.string,
-    isPlaying: PropTypes.bool
+    isPlaying: PropTypes.bool,
+    class:PropTypes.string
 };
 
 export default Song;

@@ -1,0 +1,11 @@
+.album {
+  display: none;
+  visibility: hidden; }
+  @media only screen and (min-width: 800px) {
+    .album {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      display: flex; }
+      .album.visible {
+        visibility: visible; } }

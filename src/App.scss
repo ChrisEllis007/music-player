@@ -6,4 +6,15 @@
 .App{
   padding: 2rem;
   background: $brown;
+  display: grid;
+}
+
+@media only screen and (min-width: $largeBreakpoint) {
+  .App {
+    grid-template-columns: 30% 70%;
+    grid-gap: 10px;
+    .album-information {
+      display: block;
+    }
+  }
 }

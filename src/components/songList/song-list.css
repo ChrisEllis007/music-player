@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  background: #7A93FF; }
+  background: #7A93FF;
+  width: 100%; }
 
 .song-list-item {
   position: relative; }

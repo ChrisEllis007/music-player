@@ -12,6 +12,7 @@
   height: $height;
   background: $lightBlue;
   transform: translateY($height);
+  z-index: 999;
 
   &.is-playing{
     transform: translateY(0);

@@ -28,9 +28,10 @@ class SongList extends React.Component{
                 <ul className='song-list'>
                     {this.props.songs.map((song, index) => {
                         return (
-                            <li className="song-list-item" key={"song" + index}
+                            <li className="song-list-item " key={"song" + index}
                                 onClick={_ => this.onSongSelected(index)}>
                                 <Song
+                                    class={this.props.songClassName}
                                     index={index}
                                     boxArt={song.artworkUrl60}
                                     name={song.trackName}
@@ -51,9 +52,10 @@ class SongList extends React.Component{
 
 SongList.propTypes = {
     songs: PropTypes.array,
-    onSelection: PropTypes.func,
-    selectedIndex: PropTypes.number
-}
+    onSelection: PropTypes.func.isRequired,
+    selectedIndex: PropTypes.number,
+    songClassName:PropTypes.string
+};
 
 export default SongList;
 

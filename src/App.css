@@ -3,4 +3,12 @@
 
 .App {
   padding: 2rem;
-  background: #B29232; }
+  background: #B29232;
+  display: grid; }
+
+@media only screen and (min-width: 800px) {
+  .App {
+    grid-template-columns: 30% 70%;
+    grid-gap: 10px; }
+    .App .album-information {
+      display: block; } }

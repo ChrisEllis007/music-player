@@ -1,2 +1,15 @@
+@import "../../common/sass/variables";
+
 .album{
+  display: none;
+  visibility: hidden;
+  @media only screen and (min-width: $largeBreakpoint) {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    &.visible{
+      visibility: visible;
+    }
+  }
 }

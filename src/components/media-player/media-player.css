@@ -1,0 +1,27 @@
+.media-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  background: #94A8FF;
+  transform: translateY(6rem);
+  z-index: 999; }
+  .media-player.is-playing {
+    transform: translateY(0);
+    transition: transform .3s ease-out; }
+  .media-player.is-paused .media-player-btn-play {
+    display: none; }
+  .media-player.is-paused .media-player-btn-pause {
+    display: block; }
+  .media-player .media-player-btn {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer; }
+    .media-player .media-player-btn:hover {
+      opacity: .8; }
+  .media-player .media-player-btn-pause {
+    display: none; }
