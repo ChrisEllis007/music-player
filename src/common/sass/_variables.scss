@@ -1,10 +1,36 @@
-$darkBlue:#4458B2;
-$midBlue:#7A93FF;
-$lightBlue:#94A8FF;
-$brown:#B29232;
-$tan:#FFDE7A;
+/*  ---------------------------------------------------------------------------------------
+ *  Variables: globally used values
+ *  ---------------------------------------------------------------------------------------
+ */
+
+/**
+Colours
+ */
+$darkBlue:#26727F;
+$midBlue:#00AECC;
+$lightBlue:#00D9FF;
+$brown:#006C7F;
+$tan:#4CE4FF;
 
 
-$mediumTitleText: 1.3rem;
-
+/**
+Breakpoints
+ */
 $largeBreakpoint: 800px;
+
+
+/**
+font-families
+**/
+$primary-heading-font-family:Verdana, Geneva, sans-serif;
+$primary-body-font-family: Verdana, Geneva, sans-serif;
+
+//z-indexes
+$zindex-audio-player: 999;
+
+
+//icon sizes
+$icon-s: 14px;
+$icon-m: 18px;
+$icon-l: 35px;
+$icon-xl: 50px;

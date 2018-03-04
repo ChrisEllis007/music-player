@@ -13,18 +13,15 @@ class Album extends React.Component{
         super();
     }
 
-    // componentWillReceiveProps(nextProps){
-    //     if (nextProps.song !== this.props.song) {
-    //         this.playSong(nextProps.song);
-    //     }
-    // }
 
 
     render() {
         return(
             <div className={'album ' + (this.props.songs.length > 0 ? ' visible' : '')}>
-                <h2>{this.props.songName}</h2>
-                <img className='song-box-art' alt='box art' src={this.props.boxArt}/>
+               <div className="album-details">
+                    <h1 className="album-song-title">{this.props.songName}</h1>
+                    <img className='album-song-box-art' alt='box art' src={this.props.boxArt}/>
+               </div>
                 <MediaPlayer
                     isPaused={this.props.isPaused}
                     isPlaying={this.props.isPlaying}
@@ -35,7 +32,8 @@ class Album extends React.Component{
                 <SongList
                     selectedIndex={-1}
                     onSelection={index => console.log('do nothing for now')}
-                    songs={this.props.songs} songClassName='song-album'/>
+                    songs={this.props.songs}
+                    songClassName='song-album'/>
             </div>
         )
     }

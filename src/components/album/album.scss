@@ -3,6 +3,9 @@
 .album{
   display: none;
   visibility: hidden;
+  .album-song-box-art{
+    padding: 2rem;
+  }
   @media only screen and (min-width: $largeBreakpoint) {
     flex-direction: column;
     align-items: center;
@@ -10,6 +13,16 @@
     display: flex;
     &.visible{
       visibility: visible;
+    }
+    .album-song-title{
+    color: #fff;
+    }
+    .album-details{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
     }
   }
 }

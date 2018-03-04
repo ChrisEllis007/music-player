@@ -1,6 +1,21 @@
+/*  ---------------------------------------------------------------------------------------
+ *  Variables: globally used values
+ *  ---------------------------------------------------------------------------------------
+ */
+/**
+Colours
+ */
+/**
+Breakpoints
+ */
+/**
+font-families
+**/
 .album {
   display: none;
   visibility: hidden; }
+  .album .album-song-box-art {
+    padding: 2rem; }
   @media only screen and (min-width: 800px) {
     .album {
       flex-direction: column;
@@ -8,4 +23,12 @@
       width: 100%;
       display: flex; }
       .album.visible {
-        visibility: visible; } }
+        visibility: visible; }
+      .album .album-song-title {
+        color: #fff; }
+      .album .album-details {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column; } }

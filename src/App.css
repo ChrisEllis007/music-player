@@ -1,9 +1,19 @@
-* {
-  box-sizing: border-box; }
-
+/*  ---------------------------------------------------------------------------------------
+ *  Variables: globally used values
+ *  ---------------------------------------------------------------------------------------
+ */
+/**
+Colours
+ */
+/**
+Breakpoints
+ */
+/**
+font-families
+**/
 .App {
   padding: 2rem;
-  background: #B29232;
+  background: #006C7F;
   display: grid;
   min-height: 100vh; }
 

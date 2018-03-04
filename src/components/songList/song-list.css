@@ -1,8 +1,21 @@
+/*  ---------------------------------------------------------------------------------------
+ *  Variables: globally used values
+ *  ---------------------------------------------------------------------------------------
+ */
+/**
+Colours
+ */
+/**
+Breakpoints
+ */
+/**
+font-families
+**/
 .song-list {
   margin: 0;
   padding: 0;
   list-style: none;
-  background: #7A93FF;
+  background: #00AECC;
   width: 100%; }
 
 .song-list-item {
@@ -14,7 +27,7 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background: #4458B2; }
+    background: #26727F; }
 
 .song-list-empty {
   width: 100%;

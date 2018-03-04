@@ -1,3 +1,16 @@
+/*  ---------------------------------------------------------------------------------------
+ *  Variables: globally used values
+ *  ---------------------------------------------------------------------------------------
+ */
+/**
+Colours
+ */
+/**
+Breakpoints
+ */
+/**
+font-families
+**/
 .song {
   display: flex;
   flex-direction: row;
@@ -8,7 +21,7 @@
   .song.is-playing .song-playing-icon {
     opacity: 1; }
   .song.is-selected {
-    background: #4458B2; }
+    background: #26727F; }
   .song:hover {
     cursor: pointer;
     opacity: .7; }
@@ -16,8 +29,6 @@
   .song.song-album .song-album,
   .song.song-album .song-artist {
     display: none; }
-  .song.song-album .song-title {
-    font-size: 1.3rem; }
   .song .song-title,
   .song .song-artist,
   .song .song-album {

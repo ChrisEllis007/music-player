@@ -1,3 +1,16 @@
+/*  ---------------------------------------------------------------------------------------
+ *  Variables: globally used values
+ *  ---------------------------------------------------------------------------------------
+ */
+/**
+Colours
+ */
+/**
+Breakpoints
+ */
+/**
+font-families
+**/
 .media-player {
   display: flex;
   align-items: center;
@@ -7,7 +20,7 @@
   left: 0;
   right: 0;
   height: 6rem;
-  background: #94A8FF;
+  background: #00D9FF;
   transform: translateY(6rem);
   z-index: 999; }
   .media-player.is-playing {
