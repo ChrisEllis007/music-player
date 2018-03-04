@@ -1,0 +1,95 @@
+/*  ---------------------------------------------------------------------------------------
+ *  Typography: all properties pertaining to typography base classes should be defined here
+ *  ---------------------------------------------------------------------------------------
+ */
+
+@import "variables";
+/**
+  Breakpoint definitions (by default they are the same as the grid)
+ */
+$breakpoints: ( large : $largeBreakpoint );
+/**
+ Each font size has an array of font-size/line-heights.
+ The null value is the default size and is required
+ After that breakpoints that match the name of the breakpoint definitions can be optionally added.
+ */
+
+
+$h1-font-sizes:       ( null : (24px, 34px),  large : (38px, 32px) );
+$h2-font-sizes:       ( null : (18px, 24px),  large : (34px, 35px) );
+$h3-font-sizes:       ( null : (24px, 30px),  large : (24px, 30px) );
+$h4-font-sizes:       ( null : (24px, 25px),  large : (22px, 25px) );
+$h5-font-sizes:       ( null : (12px, 16px),  large : (14px, 18px) );
+$p-font-sizes:        ( null : (20px, 26px) );
+$a-font-sizes:        ( null : (14px, 18px) );
+$p-small-font-sizes:  ( null : (14px, 16px), large : (18px, 18px) );
+
+/**
+  The implementation of the mixins for each base typography style
+ */
+h1,h2, h4 {
+  font-family: $primary-heading-font-family;
+}
+
+h3, h5{
+  font-family: $primary-heading-font-family;
+}
+
+
+input, a {
+  font-family: $primary-body-font-family;
+}
+
+
+p{
+  font-family: $primary-body-font-family;
+  &.detail{
+    font-family: $primary-body-font-family;
+  }
+}
+
+
+h1 {
+  @include font-size($h1-font-sizes);
+}
+
+h2 {
+  @include font-size($h2-font-sizes);
+}
+
+h3 {
+  @include font-size($h3-font-sizes);
+}
+
+h4 {
+  @include font-size($h4-font-sizes);
+}
+
+h5 {
+  @include font-size($h5-font-sizes);
+}
+
+a.icon-link {
+  @include font-size($a-font-sizes);
+  letter-spacing: 0.5px;
+}
+
+p{
+  @include font-size($p-font-sizes);
+}
+
+input {
+  @include font-size($p-font-sizes);
+}
+input::-webkit-input-placeholder {
+  font-style: italic;
+}
+input::-moz-placeholder {
+  font-style: italic;
+}
+input:-ms-input-placeholder {
+  font-style: italic;
+}
+input:-moz-placeholder {
+  font-style: italic;
+}
