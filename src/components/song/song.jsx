@@ -8,11 +8,6 @@ import songPlayingIcon from '../../common/images/speaker.png';
  */
 class Song extends React.Component{
 
-    constructor() {
-        super();
-    }
-
-
     render() {
         return(
             <div className={'song' +

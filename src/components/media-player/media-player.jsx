@@ -9,10 +9,6 @@ import pauseBtn from '../../assets/images/pause.png';
  */
 class MediaPlayer extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
 
     /**
      * Plays a given song

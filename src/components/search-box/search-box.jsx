@@ -7,9 +7,6 @@ import './search-box.css';
  */
 class SearchBox extends React.Component{
 
-    constructor() {
-        super();
-    }
 
     render() {
         return(

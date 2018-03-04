@@ -8,10 +8,6 @@ import './song-list.css';
  */
 class SongList extends React.Component{
 
-    constructor() {
-        super();
-    }
-
     /**
      * Called when a song has been clicked on
      * @param index
