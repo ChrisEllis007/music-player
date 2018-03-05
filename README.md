@@ -12,6 +12,8 @@ You can delete or rename the other files.
 
 ## Running and Building
 
+To install dependencies run `npm install` before trying to run the app.
+
 In the project directory, you can run:
 
 ### `npm start`
