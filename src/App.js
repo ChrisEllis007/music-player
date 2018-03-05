@@ -120,7 +120,7 @@ class App extends Component {
             this.setState(
                 {
                     albumSongs: track,
-                    albumBoxArt: track.artworkUrl100
+                    albumBoxArt: track[0].artworkUrl100
                 });
         } else {
             // get album songs
