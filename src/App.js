@@ -125,7 +125,6 @@ class App extends Component {
         } else {
             // get album songs
             getSongsOfCollection(this.state.currentAlbumId).then(songList => {
-                console.log('songlist = ', songList);
                 if (songList.resultCount > 0) {
                     this.setState(
                         {
