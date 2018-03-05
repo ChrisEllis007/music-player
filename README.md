@@ -107,12 +107,14 @@ In both modes (wide and narrow):
 
 ## Known Errors
 * Switching between modes (wide and narrow) causes issues with the audio.  When doing this, the browser requires a refresh 
+* On searching the playing icon shows at the same index on the new search results.  It should clear.
 (see **TODO** regarding refactoring the audio below)
 
 ## TODO
 * Refactor Audio - A mistake was made tying the audio state to the state of the play/pause buttons.  I need to pull
 out the Audio from the MediaPlayer and put it in it's own service and then change the state in App.js to have the control button states 
 separate from the playing of the track.
+* Add a buffering indication when waiting for song to load
 * Accessibility features (keyboard navigation, colour contrast checking, adding relevant aria roles)
 * Add routing so that the browser back and forward buttons work
 * Check security (XSS)

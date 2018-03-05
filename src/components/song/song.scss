@@ -8,7 +8,7 @@
   align-items: center;
   position: relative;
 
-  &.is-playing.is-selected{
+  &.is-playing{
     .song-playing-icon{
       opacity: 1;
     }
