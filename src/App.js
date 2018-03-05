@@ -61,11 +61,10 @@ class App extends Component {
     onUpdatedSearchQuery(event, value){
         // update the state of the search query
         this.setState({searchQuery: value}, () => {
-            // only perform a search if more than 2 characters have been typed
             // TODO check integrity of data
-            if (this.state.searchQuery.length > 3 && !this.state.isLoading) {
+            if (!this.state.isLoading && value.length > 0) {
                 //show loading screen
-                this.setState({isLoading: true});
+                this.setState({isLoading: true, searchResultsSongIndex: -1});
                 //change the spaces for +'s for the service
                 const searchQuery = this.state.searchQuery.split(' ').join('+');
                 this.getSongList(searchQuery).then(songList => {
@@ -84,7 +83,6 @@ class App extends Component {
         const songURL  = selectedSong.previewUrl;
         const songName  = selectedSong.trackName;
         const albumId  = selectedSong.collectionId;
-
 
         let newState = {
             currentSongName: songName,
@@ -116,13 +114,34 @@ class App extends Component {
      * TODO  no need to do this in narrow mode
      */
     getAlbumSongs(){
-        getSongsOfCollection(this.state.currentAlbumId).then(songList => {
+        // if there is no associated album, just play the song
+        if(this.state.currentAlbumId === undefined){
+            const track = [this.state.songList[this.state.searchResultsSongIndex]];
             this.setState(
                 {
-                    albumSongs: songList.results.filter(item => item.wrapperType === 'track'),
-                    albumBoxArt: songList.results[0].artworkUrl100
-                })
-        });
+                    albumSongs: track,
+                    albumBoxArt: track.artworkUrl100
+                });
+        } else {
+            // get album songs
+            getSongsOfCollection(this.state.currentAlbumId).then(songList => {
+                console.log('songlist = ', songList);
+                if (songList.resultCount > 0) {
+                    this.setState(
+                        {
+                            albumSongs: songList.results.filter(item => item.wrapperType === 'track'),
+                            albumBoxArt: songList.results[0].artworkUrl100
+                        })
+                }
+            }).catch(err => {
+                // TODO put in a placeholder graphic
+                this.setState(
+                    {
+                        albumSongs: [],
+                        albumBoxArt: ''
+                    });
+            });
+        }
     }
 
     /**

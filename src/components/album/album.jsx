@@ -9,12 +9,6 @@ import MediaPlayer from "../media-player/media-player";
  */
 class Album extends React.Component{
 
-    constructor() {
-        super();
-    }
-
-
-
     render() {
         return(
             <div className={'album ' + (this.props.songs.length > 0 ? ' visible' : '')}>

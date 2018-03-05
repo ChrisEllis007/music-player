@@ -18,7 +18,7 @@ font-families
   padding: 1rem;
   align-items: center;
   position: relative; }
-  .song.is-playing .song-playing-icon {
+  .song.is-playing.is-selected .song-playing-icon {
     opacity: 1; }
   .song.is-selected {
     background: #26727F; }

@@ -8,7 +8,7 @@
   align-items: center;
   position: relative;
 
-  &.is-playing{
+  &.is-playing.is-selected{
     .song-playing-icon{
       opacity: 1;
     }
@@ -29,9 +29,6 @@
     .song-album,
     .song-artist{
       display:none;
-    }
-    .song-title{
-      //font-size: $mediumTitleText;
     }
   }
 
