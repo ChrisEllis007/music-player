@@ -47,7 +47,9 @@ class App extends Component {
         return new Promise((resolve,reject) => {
             getSongs(searchQuery)
                 .then((body) => {
-                    resolve(body.results);
+                    // TODO this should be done in the service
+                    const songList = body.results.filter(item => item.kind === 'song');
+                    resolve(songList);
                 })
                 .catch(err => reject(err));
         })
